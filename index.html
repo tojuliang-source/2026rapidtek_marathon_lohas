@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鐳洋科技 - 2026 路跑報名系統</title>
+    <style>
+        body { font-family: "Microsoft JhengHei", sans-serif; background-color: #f8f9fa; margin: 0; padding: 20px; display: flex; flex-direction: column; min-height: 100vh; }
+        .container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 600px; margin: auto; flex: 1; }
+        .logo-container { text-align: center; margin-bottom: 25px; }
+        .logo-placeholder { width: 220px; height: auto; }
+        .banner-img { width: 100%; height: auto; border-radius: 8px; margin-bottom: 20px; border: 1px solid #eee; }
+        h2 { text-align: center; color: #003366; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h3 { color: #555; font-size: 16px; margin-top: 20px; border-left: 4px solid #003366; padding-left: 10px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; color: #333; }
+        input, select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 16px; }
+        /* 鎖定欄位的樣式：反灰且不可改寫 */
+        input[readonly] { background-color: #e9ecef; color: #6c757d; cursor: not-allowed; border: 1px solid #ddd; }
+        .row { display: flex; gap: 10px; }
+        .row .form-group { flex: 1; }
+        button { width: 100%; padding: 15px; background-color: #003366; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 18px; margin-top: 20px; font-weight: bold; }
+        button:hover { background-color: #002244; }
+        .hidden { display: none !important; }
+        footer { text-align: center; font-size: 12px; color: #999; margin-top: 30px; padding-bottom: 10px; }
+
+        /* 切結書彈窗樣式 */
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 999; }
+        #agreementBox { background: white; width: 90%; max-width: 700px; max-height: 85vh; padding: 25px; border-radius: 10px; overflow-y: auto; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+        .agreement-content { font-size: 14px; line-height: 1.8; color: #444; text-align: justify; background: #f9f9f9; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .warning-title { color: #d9534f; font-weight: bold; margin-top: 15px; display: block; }
+    </style>
+</head>
+<body>
+
+<div id="overlay">
+    <div id="agreementBox">
+        <h2>活動切結書</h2>
+        <div class="agreement-content">
+            本人或本團體已詳細閱讀過本活動之競賽規程且同意亦保證遵守大會於競賽規程中所約定之事項，保證本人或本團體隊員身心健康，亦了解馬拉松/路跑比賽所需承受之風險，自願參加比賽方開始報名，競賽中若發生任何意外事件，本人或本團體及家屬願意承擔比賽期間所發生之個人意外風險責任，亦同意對於非主辦方所造成的傷害、死亡或其他任何形式的損失放棄提出任何形式的賠償索求，一切責任與主辦單位無關；亦明白此項比賽的錄影、相片、姓名、號碼布號碼及成績於世界各地播放或展出與販售及登出於本會網站上，本人或本團體亦同意主辦或被主辦單位授權之單位得蒐集、處理及利用本人之個人資料與照片，及寄送相關路跑活動訊息或使用本人或本團體肖像及成績於宣傳活動上。本人或本團體同意獨家授權主辦單位及主辦單位指定之人，得於本次活動期間拍攝本人之影音、照片，並得於辦理本次活動目的範圍内，蒐集、處理、利用個人資料保護法所列之所有本人個人資料。亦同意獨家授權主辦單位及主辦單位指定之人，得公開、利用、販售本次活動期間本人之影音、照片。且非經本人或本團體同意者(非上述授權之對象)，禁止於本次活動期間拍攝本人之影音、照片後，用以販售或從事任何商業行為。且保證提供有效的身份證和資料用於核實本人或本團體身份，對以上論述予以確認並願意承擔相應的法律責任。一經報名後將不得以任何理由質疑競賽內容所例之事項。選手如曾經有不明原因的胸部不適（胸痛、胸悶），不明原因的呼吸困難，家族心臟病、糖尿病史等皆屬心肌梗塞高危險群，建議選手慎重考慮自身安全勿勉強參賽或請醫師評估參賽風險及先接受心電圖檢測並自行加保個人人身意外保險。報名時請確認具有能力在限時內完賽，已完成報名手續者，不得以任何理由要求更換人名、參賽項目、衣服尺寸或退費亦不得因無法參賽轉讓該報名資格。無完成報名者將不具參賽資格，嚴禁陪跑。
+            
+            <span class="warning-title">注意事項：</span>
+            1. 凡報名並完成繳費者，若需加報請依加報流程報名，郵資費用恕不提供合併服務。<br>
+            2. 若是採團體報名，請團長務必告知團員以上注意事項。<br>
+            3. 本系統同時間只能操作一場報名/一個團體，若您多開報名頁面或同時操作多團報名，可能會造成資料錯誤或遺失。
+        </div>
+        <button onclick="acceptAgreement()">我同意並遵守以上事項</button>
+    </div>
+</div>
+
+<div class="container">
+    <div class="logo-container">
+        <img src="rapidtek_logo.png" alt="Rapidtek Logo" class="logo-placeholder">
+    </div>
+
+    <div id="loginSection">
+        <h2>員工登入驗證</h2>
+        <div class="form-group">
+            <label>跑者電子信箱 (公司信箱)</label>
+            <input type="email" id="loginEmail" placeholder="example@rapidtek.com" required>
+        </div>
+        <div class="form-group">
+            <label>員工工號</label>
+            <input type="text" id="empID" placeholder="請輸入工號" required>
+        </div>
+        <button type="button" onclick="showSurvey()">驗證並填寫資料</button>
+    </div>
+
+    <form id="surveyForm" class="hidden">
+        <img src="banner.png" alt="活動橫幅" class="banner-img">
+        
+        <h2>鐳洋科技員工報名資料填寫</h2>
+        
+        <h3>基本資料</h3>
+        <div class="form-group">
+            <label>團員姓名</label>
+            <input type="text" name="name" required>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label>團員身分證字號</label>
+                <input type="text" name="idNum" required>
+            </div>
+            <div class="form-group">
+                <label>團員性別</label>
+                <select name="gender" required>
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label>團員生日</label>
+                <input type="date" name="birthday" required>
+            </div>
+            <div class="form-group">
+                <label>行動電話</label>
+                <input type="tel" name="phone" required placeholder="09xxxxxxxx">
+            </div>
+        </div>
+
+        <h3>發票與緊急聯絡資訊</h3>
+        <div class="form-group">
+            <label>發票類型 (已預設鎖定)</label>
+            <input type="text" name="invoiceType" value="公司報帳(三聯式)" readonly>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label>抬頭 (已鎖定)</label>
+                <input type="text" name="invoiceTitle" value="鐳洋科技股份有限公司" readonly>
+            </div>
+            <div class="form-group">
+                <label>統一編號 (已鎖定)</label>
+                <input type="text" name="taxId" value="91616791" readonly>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label>保證人 (緊急聯絡人) 姓名</label>
+                <input type="text" name="guarantorName" required>
+            </div>
+            <div class="form-group">
+                <label>保證人 (緊急聯絡人) 身分證</label>
+                <input type="text" name="guarantorId" required>
+            </div>
+        </div>
+
+        <h3>項目選填</h3>
+        <div class="form-group">
+            <label>競賽項目</label>
+            <select name="category" required>
+                <option value="21公里組">21公里組</option>
+                <option value="10公里組">10公里組</option>
+                <option value="5公里組">5公里組</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>好禮二選一</label>
+            <select name="gift" required>
+                <option value="Panasonic果汁機">Panasonic果汁機</option>
+                <option value="Panasonic掛燙機">Panasonic掛燙機</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>紀念運動衣 (尺寸)</label>
+            <select name="tshirt" required>
+                <option value="紀念運動衣(XXS)">XXS</option>
+                <option value="紀念運動衣(XS)">XS</option>
+                <option value="紀念運動衣(S)">S</option>
+                <option value="紀念運動衣(M)">M</option>
+                <option value="紀念運動衣(L)">L</option>
+                <option value="紀念運動衣(XL)">XL</option>
+                <option value="紀念運動衣(XXL)">XXL</option>
+            </select>
+        </div>
+
+        <button type="submit" id="submitBtn">確認提交報名並發送回信</button>
+    </form>
+</div>
+
+<footer>
+    Rapidtek Technologies Inc. © 2025 All Rights Reserved.
+</footer>
+
+<script>
+    // 同意切結書按鈕邏輯
+    function acceptAgreement() {
+        document.getElementById('overlay').classList.add('hidden');
+    }
+
+    // 驗證登入邏輯
+    function showSurvey() {
+        const email = document.getElementById('loginEmail').value;
+        const empID = document.getElementById('empID').value;
+        if(email.trim() !== "" && empID.trim() !== "") {
+            document.getElementById('loginSection').classList.add('hidden');
+            document.getElementById('surveyForm').classList.remove('hidden');
+            window.scrollTo(0, 0); // 回到頂部以便查看 banner
+        } else {
+            alert('請完整填寫公司信箱與工號');
+        }
+    }
+
+    // 表單提交邏輯
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwvB04SsgwpY3JnbJKui5J3Y1d2YxIoCj_sC_5fHlQfQ5_pIpdfmQd-jcKrK_FBPEQb/exec';
+    const form = document.getElementById('surveyForm');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        const submitBtn = document.getElementById('submitBtn');
+        submitBtn.disabled = true;
+        submitBtn.innerText = '資料傳送中...';
+
+        const formData = new FormData(form);
+        // 合併第一頁填寫的 Email
+        formData.append('email', document.getElementById('loginEmail').value);
+
+        fetch(scriptURL, { method: 'POST', body: formData})
+            .then(response => {
+                alert('報名成功！確認信件已發送至您的信箱。');
+                location.reload();
+            })
+            .catch(error => {
+                alert('提交失敗，請確認網路連線');
+                submitBtn.disabled = false;
+                submitBtn.innerText = '確認提交報名並發送回信';
+            });
+    });
+</script>
+
+</body>
+</html>
