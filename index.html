@@ -7,204 +7,132 @@
     <style>
         /* Rapidtek 企業配色定義 */
         :root {
-            --rp-purple: #4A245E;    /* 鐳洋深紫 */
-            --rp-orange: #F39800;    /* 鐳洋橘 */
-            --rp-orange-hover: #D98800;
-            --rp-bg-light: #F8F6F9;
-            --rp-text: #333333;
+            --primary-purple: #4A245E; /* 鐳洋深紫 */
+            --primary-orange: #F39800; /* 鐳洋橘 */
+            --secondary-orange: #FFB84D;
+            --bg-light: #FDFCFB;
         }
 
-        body { 
-            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif; 
-            background-color: var(--rp-bg-light); 
-            margin: 0; 
-            padding: 20px; 
-            display: flex; 
-            flex-direction: column; 
-            min-height: 100vh; 
-            color: var(--rp-text);
-        }
-
-        .container { 
-            background: white; 
-            padding: 40px 30px; 
-            border-radius: 16px; 
-            box-shadow: 0 10px 30px rgba(74, 36, 94, 0.08); 
-            width: 100%; 
-            max-width: 650px; 
-            margin: auto; 
-            flex: 1; 
-            border-top: 6px solid var(--rp-purple);
-        }
-
-        .logo-container { text-align: center; margin-bottom: 30px; }
+        body { font-family: "Microsoft JhengHei", sans-serif; background-color: #fcf8f2; margin: 0; padding: 20px; display: flex; flex-direction: column; min-height: 100vh; }
+        .container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(74, 36, 94, 0.1); width: 100%; max-width: 600px; margin: auto; flex: 1; }
+        .logo-container { text-align: center; margin-bottom: 25px; }
         .logo-placeholder { width: 220px; height: auto; }
-        .banner-img { width: 100%; height: auto; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #eee; }
+        .banner-img { width: 100%; height: auto; border-radius: 8px; margin-bottom: 20px; border: 1px solid #eee; }
         
-        h2 { 
-            text-align: center; 
-            color: var(--rp-purple); 
-            font-size: 24px;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 15px;
-        }
-        h2::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--rp-orange);
-            border-radius: 2px;
-        }
+        h2 { text-align: center; color: var(--primary-purple); border-bottom: 2px solid var(--primary-orange); padding-bottom: 10px; }
+        h3 { color: #555; font-size: 16px; margin-top: 20px; border-left: 4px solid var(--primary-orange); padding-left: 10px; }
+        
+        .official-notice { background-color: #fff4e6; border: 1px solid var(--primary-orange); padding: 15px; border-radius: 8px; margin-bottom: 25px; font-size: 14px; line-height: 1.6; color: #856404; }
+        .official-notice b { color: var(--primary-orange); }
 
-        h3 { 
-            color: var(--rp-purple); 
-            font-size: 18px; 
-            margin-top: 35px; 
-            margin-bottom: 15px;
-            border-left: 5px solid var(--rp-orange); 
-            padding-left: 12px; 
-        }
+        .info-card { background-color: #f9f5fb; border-radius: 8px; padding: 15px; margin-bottom: 25px; border: 1px solid #e0d4e8; }
+        .info-item { margin-bottom: 10px; font-size: 15px; color: #333; }
+        .info-label { font-weight: bold; color: var(--primary-purple); display: inline-block; width: 85px; }
         
-        .official-notice { 
-            background-color: #FFF9F0; 
-            border: 1px solid #FFE8CC; 
-            padding: 18px; 
-            border-radius: 10px; 
-            margin-bottom: 25px; 
-            font-size: 14px; 
-            line-height: 1.7; 
-            color: #664d03; 
-        }
-        .official-notice b { color: var(--rp-orange); }
-
-        .info-card { 
-            background-color: #FDFBFF; 
-            border-radius: 12px; 
-            padding: 20px; 
-            margin-bottom: 25px; 
-            border: 1px solid #EBE4F0; 
-        }
-        .info-item { margin-bottom: 12px; font-size: 15px; }
-        .info-label { font-weight: bold; color: var(--rp-purple); display: inline-block; width: 90px; }
+        .schedule-table { width: 100%; border-collapse: collapse; margin-top: 10px; background: white; font-size: 13px; }
+        .schedule-table th, .schedule-table td { border: 1px solid #eee; padding: 8px; text-align: center; }
+        .schedule-table th { background-color: var(--primary-purple); color: white; }
         
-        .schedule-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 14px; border-radius: 8px; overflow: hidden; }
-        .schedule-table th { background-color: var(--rp-purple); color: white; padding: 12px; font-weight: 500; border: 1px solid #63367a; }
-        .schedule-table td { border: 1px solid #EEE; padding: 12px; text-align: center; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; color: #333; }
+        .note { font-size: 13px; color: #d9534f; margin-bottom: 10px; font-weight: bold; line-height: 1.4; }
         
-        .form-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--rp-purple); font-size: 15px; }
-        .note { font-size: 13px; color: #DC3545; margin-bottom: 12px; font-weight: bold; background: #FFF5F5; padding: 8px; border-radius: 4px; border: 1px solid #FFDADA; }
+        input, select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 16px; }
+        input:focus, select:focus { outline: none; border-color: var(--primary-orange); box-shadow: 0 0 5px rgba(243, 152, 0, 0.3); }
+        input[readonly] { background-color: #f1f1f1; color: #6c757d; cursor: not-allowed; border: 1px solid #ddd; }
         
-        input, select { 
-            width: 100%; 
-            padding: 12px 15px; 
-            border: 1.5px solid #E0E0E0; 
-            border-radius: 8px; 
-            box-sizing: border-box; 
-            font-size: 16px; 
-        }
-        input:focus, select:focus { outline: none; border-color: var(--rp-orange); box-shadow: 0 0 0 3px rgba(243, 152, 0, 0.1); }
-        input[readonly] { background-color: #F5F5F5; color: #777; cursor: not-allowed; }
-        
-        .row { display: flex; gap: 15px; }
+        .row { display: flex; gap: 10px; }
         .row .form-group { flex: 1; }
         
-        button { 
-            width: 100%; 
-            padding: 16px; 
-            background-color: var(--rp-orange); 
-            color: white; 
-            border: none; 
-            border-radius: 8px; 
-            cursor: pointer; 
-            font-size: 18px; 
-            margin-top: 20px; 
-            font-weight: bold; 
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(243, 152, 0, 0.2);
-        }
-        button:hover { background-color: var(--rp-orange-hover); transform: translateY(-2px); }
+        button { width: 100%; padding: 15px; background-color: var(--primary-orange); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 18px; margin-top: 20px; font-weight: bold; transition: 0.3s; }
+        button:hover { background-color: #e08a00; transform: translateY(-1px); }
         
-        .size-btn { 
-            background: #EEE; 
-            color: var(--rp-purple); 
-            border: 1px solid #DDD; 
-            padding: 4px 12px; 
-            border-radius: 20px; 
-            font-size: 12px; 
-            cursor: pointer; 
-            margin-left: 10px; 
-            vertical-align: middle;
-        }
-
         .hidden { display: none !important; }
-        footer { text-align: center; font-size: 13px; color: #888; margin-top: 40px; padding-bottom: 20px; line-height: 1.8; }
+        footer { text-align: center; font-size: 12px; color: #999; margin-top: 30px; padding-bottom: 10px; }
 
-        #overlay, #sizeOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(74, 36, 94, 0.85); display: flex; justify-content: center; align-items: center; z-index: 999; backdrop-filter: blur(4px); }
-        #agreementBox, #sizeBox { background: white; width: 90%; max-width: 650px; max-height: 85vh; padding: 35px; border-radius: 16px; overflow-y: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-        #agreementBody { font-size: 15px; line-height: 1.8; color: #444; text-align: justify; background: #FDFBFF; padding: 20px; border: 1px solid #EBE4F0; border-radius: 8px; white-space: pre-wrap; }
-        .warning-title { color: var(--rp-orange); font-weight: bold; margin-top: 20px; display: block; }
+        #overlay, #sizeOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 999; }
+        #agreementBox, #sizeBox { background: white; width: 90%; max-width: 700px; max-height: 85vh; padding: 25px; border-radius: 10px; overflow-y: auto; }
+        #agreementBody { font-size: 14px; line-height: 1.8; color: #444; text-align: justify; background: #fffaf5; padding: 15px; border: 1px solid #ffe8cc; border-radius: 5px; white-space: pre-wrap; }
+        .warning-title { color: var(--primary-orange); font-weight: bold; margin-top: 15px; display: block; }
 
-        .size-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--rp-orange); padding-bottom: 15px; margin-bottom: 15px; }
+        .size-btn { background: var(--primary-purple); color: white; border: none; padding: 4px 10px; border-radius: 4px; font-size: 12px; cursor: pointer; margin-left: 10px; vertical-align: middle; }
+        .size-table th { background-color: #f2f2f2; color: var(--primary-purple); }
+        .size-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--primary-orange); margin-bottom: 15px; }
 
-        #thankYouSection { text-align: center; padding: 50px 10px; }
-        .thank-you-name { font-weight: bold; color: var(--rp-orange); }
-
-        @media (max-width: 480px) {
-            .row { flex-direction: column; gap: 0; }
-        }
+        #thankYouSection { text-align: center; padding: 40px 10px; }
+        .thank-you-name { font-weight: bold; color: var(--primary-orange); }
     </style>
 </head>
 <body>
 
 <div id="overlay">
     <div id="agreementBox">
-        <h2 style="margin-top:0;">活動切結書與免責聲明</h2>
+        <h2>活動切結書與免責聲明</h2>
         <div id="agreementBody"></div>
-        <button type="button" onclick="acceptAgreement()" style="background: var(--rp-purple);">我同意並遵守以上事項</button>
+        <button type="button" onclick="acceptAgreement()">我同意並遵守以上事項</button>
     </div>
 </div>
 
 <div id="sizeOverlay" class="hidden">
     <div id="sizeBox">
         <div class="size-header">
-            <h2 style="border:none; margin:0; padding:0; text-align: left;">衣服尺寸對照表</h2>
-            <span style="cursor:pointer; font-size:28px; color:#999;" onclick="toggleSizeModal()">×</span>
+            <h2 style="border:none; margin:0; padding:0;">衣服尺寸對照表</h2>
+            <span style="cursor:pointer; font-size:24px;" onclick="toggleSizeModal()">×</span>
         </div>
-        <p style="font-size:13px; color:#666;">單位: 公分 | 衣服尺寸誤差值在正負 2cm 內屬於正常範圍</p>
+        <p style="font-size:13px; color:#666;">單位:公分 | 衣服尺寸誤差值在正負2cm內屬於正常範圍</p>
         
-        <svg viewBox="0 0 400 320" style="width:100%; max-width:280px; display:block; margin:20px auto;">
-            <path d="M100,40 L300,40 L380,100 L330,150 L300,130 L300,300 L100,300 L100,130 L70,150 L20,100 Z" fill="none" stroke="#4A245E" stroke-width="3"/>
-            <line x1="100" y1="160" x2="300" y2="160" stroke="#F39800" stroke-width="2" stroke-dasharray="5,5" />
-            <text x="175" y="150" fill="#F39800" font-size="14" font-weight="bold">胸寬</text>
-            <line x1="200" y1="40" x2="200" y2="300" stroke="#F39800" stroke-width="2" stroke-dasharray="5,5" />
-            <text x="210" y="230" fill="#F39800" font-size="14" font-weight="bold">衣長</text>
+        <svg viewBox="0 0 400 400" style="width:100%; max-width:300px; display:block; margin:10px auto;">
+            <path d="M100,50 L300,50 L380,120 L330,170 L300,150 L300,350 L100,350 L100,150 L70,170 L20,120 Z" fill="none" stroke="#333" stroke-width="2"/>
+            <line x1="100" y1="180" x2="300" y2="180" stroke="#F39800" stroke-width="2" stroke-dasharray="5,5" />
+            <text x="180" y="170" fill="#F39800" font-size="14">胸寬</text>
+            <line x1="200" y1="50" x2="200" y2="350" stroke="#F39800" stroke-width="2" stroke-dasharray="5,5" />
+            <text x="210" y="250" fill="#F39800" font-size="14">衣長</text>
         </svg>
 
-        <table class="schedule-table">
+        <style>
+            .size-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 13px; }
+            .size-table th, .size-table td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        </style>
+        <table class="size-table">
             <thead>
                 <tr>
-                    <th style="background:#F5F5F5; color:var(--rp-purple);">尺寸</th>
-                    <th>XXS</th><th>XS</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>2XL</th><th>3XL</th>
+                    <th>尺寸</th>
+                    <th>XXS</th>
+                    <th>XS</th>
+                    <th>S</th>
+                    <th>M</th>
+                    <th>L</th>
+                    <th>XL</th>
+                    <th>2XL</th>
+                    <th>3XL</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td style="font-weight:bold; background:#F5F5F5;">胸圍</td>
-                    <td>86.4</td><td>91.4</td><td>96.5</td><td>101.6</td><td>106.7</td><td>113</td><td>119.4</td><td>125.7</td>
+                    <td><b>胸圍</b></td>
+                    <td>86.4</td>
+                    <td>91.4</td>
+                    <td>96.5</td>
+                    <td>101.6</td>
+                    <td>106.7</td>
+                    <td>113</td>
+                    <td>119.4</td>
+                    <td>125.7</td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold; background:#F5F5F5;">肩寬</td>
-                    <td>40.6</td><td>41.6</td><td>42.9</td><td>44.1</td><td>45.4</td><td>47.3</td><td>48.6</td><td>49.8</td>
+                    <td><b>肩寬</b></td>
+                    <td>40.6</td>
+                    <td>41.6</td>
+                    <td>42.9</td>
+                    <td>44.1</td>
+                    <td>45.4</td>
+                    <td>47.3</td>
+                    <td>48.6</td>
+                    <td>49.8</td>
                 </tr>
             </tbody>
         </table>
-        <button type="button" onclick="toggleSizeModal()" style="background:var(--rp-purple); margin-top:25px;">關閉視窗</button>
+        <button type="button" onclick="toggleSizeModal()" style="background:var(--primary-purple); margin-top:15px;">關閉</button>
     </div>
 </div>
 
@@ -215,10 +143,11 @@
         </div>
         <h2>員工登入驗證</h2>
         <div class="official-notice">
-            本頁面由<b>鐳洋科技職工福利委員會</b>建置，旨在協助同仁辦理 2026 路跑活動團體報名與補助。
+            本頁面由<b>鐳洋科技職工福利委員會</b>建置，旨在協助同仁統籌收集資料並辦理團體報名。
+            本活動之正式競賽規程、權利義務及參賽規範，悉以<b>「樂活報名網」</b>主辦單位公告為準。
         </div>
         <div class="form-group">
-            <label>電子信箱 (公司專用信箱)</label>
+            <label>電子信箱 (公司信箱)</label>
             <input type="email" id="loginEmail" placeholder="example@rapidtek.net">
         </div>
         <div class="form-group">
@@ -233,24 +162,42 @@
             <img src="rapidtek_logo.png" alt="Rapidtek Logo" class="logo-placeholder">
         </div>
         <img src="banner.png" alt="活動橫幅" class="banner-img">
-        <h2>2026 員工路跑報名表單</h2>
+        <h2>2026 鐳洋-路跑活動員工報名表單</h2>
         
         <div class="official-notice">
-            📌 <b>補助說明：</b>本次活動僅限<b>正式員工</b>享有職福會全額補助。
+            📌 <b>補助說明：</b>本次活動僅限<b>正式員工</b>享有職福會全額補助。若家屬或親友欲陪同參加，請逕自前往 <a href="https://lohasnet.tw/Technology2026/#activity" target="_blank">主辦單位網站</a> 單獨報名。
         </div>
 
         <div class="info-card">
-            <h3 style="margin-top:0;">🏃 賽事資訊</h3>
+            <h3>🏃 賽事資訊懶人包</h3>
             <div class="info-item"><span class="info-label">活動日期：</span>2026-04-19 (星期日)</div>
-            <div class="info-item"><span class="info-label">活動地點：</span>美堤河濱公園 (16號水門進入)</div>
+            <div class="info-item"><span class="info-label">活動地點：</span>台北市中山區美堤河濱公園 (16號水門進入)</div>
+            <div class="info-item"><span class="info-label">建議抵達：</span><b>05:30 - 06:00 (參加者集合、衣物寄放)</b></div>
+            
             <table class="schedule-table">
                 <thead>
-                    <tr><th>組別</th><th>起跑時間</th><th>限制時間</th></tr>
+                    <tr>
+                        <th>組別</th>
+                        <th>起跑時間</th>
+                        <th>限制時間</th>
+                    </tr>
                 </thead>
                 <tbody>
-                    <tr><td>21公里組</td><td>06:45</td><td>3.5 小時</td></tr>
-                    <tr><td>10公里組</td><td>07:00</td><td>2 小時</td></tr>
-                    <tr><td>5公里組</td><td>07:15</td><td>1.5 小時</td></tr>
+                    <tr>
+                        <td>21公里組</td>
+                        <td>06:45</td>
+                        <td>3小時30分</td>
+                    </tr>
+                    <tr>
+                        <td>10公里組</td>
+                        <td>07:00</td>
+                        <td>2小時</td>
+                    </tr>
+                    <tr>
+                        <td>5公里組</td>
+                        <td>07:15</td>
+                        <td>1小時30分</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -262,11 +209,11 @@
         </div>
         <div class="row">
             <div class="form-group">
-                <label>身分證字號</label>
+                <label>團員身分證字號</label>
                 <input type="text" name="idNum" required>
             </div>
             <div class="form-group">
-                <label>性別</label>
+                <label>團員性別</label>
                 <select name="gender" required>
                     <option value="男">男</option>
                     <option value="女">女</option>
@@ -275,33 +222,49 @@
         </div>
         <div class="row">
             <div class="form-group">
-                <label>生日</label>
+                <label>團員生日</label>
                 <input type="date" name="birthday" required>
             </div>
             <div class="form-group">
-                <label>手機</label>
+                <label>行動電話</label>
                 <input type="tel" name="phone" required placeholder="09xxxxxxxx">
             </div>
         </div>
 
         <h3>第二部分：緊急聯絡資訊</h3>
-        <div class="note">※ 緊急聯絡人請勿填寫參加同仁</div>
+        <div class="note">※ 緊急聯絡人請勿填寫參加人員</div>
         <div class="form-group">
             <label>緊急聯絡人姓名</label>
-            <input type="text" name="emergencyName" required>
+            <input type="text" name="emergencyName" required placeholder="請輸入姓名">
         </div>
         <div class="row">
             <div class="form-group">
-                <label>緊急聯絡電話</label>
-                <input type="tel" name="emergencyPhone" required>
+                <label>緊急聯絡人電話</label>
+                <input type="tel" name="emergencyPhone" required placeholder="09xxxxxxxx">
             </div>
             <div class="form-group">
-                <label>關係</label>
-                <input type="text" name="emergencyRelation" required>
+                <label>緊急聯絡人關係</label>
+                <input type="text" name="emergencyRelation" required placeholder="如：父子、配偶">
             </div>
         </div>
 
-        <h3>第三部分：項目選填</h3>
+        <h3>第三部分：發票資訊 (職福會統一對外)</h3>
+        <div class="form-group">
+            <label>發票類型 (已鎖定)</label>
+            <input type="text" name="invoiceType" value="公司報帳(三聯式)" readonly>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label>抬頭 (已鎖定)</label>
+                <input type="text" name="invoiceTitle" value="鐳洋科技股份有限公司職工福利委員會" readonly style="font-size: 13px;">
+            </div>
+            <div class="form-group">
+                <label>統一編號 (已鎖定)</label>
+                <input type="text" name="taxId" value="91616791" readonly>
+            </div>
+        </div>
+
+        <h3>第四部分：項目選填</h3>
         <div class="form-group">
             <label>競賽項目</label>
             <select name="category" required>
@@ -330,13 +293,8 @@
                 <option value="紀念運動衣(L)">L</option>
                 <option value="紀念運動衣(XL)">XL</option>
                 <option value="紀念運動衣(XXL)">XXL</option>
-                <option value="紀念運動衣(3XL)">3XL</option>
             </select>
         </div>
-
-        <input type="hidden" name="invoiceType" value="公司報帳(三聯式)">
-        <input type="hidden" name="invoiceTitle" value="鐳洋科技股份有限公司職工福利委員會">
-        <input type="hidden" name="taxId" value="91616791">
 
         <button type="submit" id="submitBtn">確認提交報名資料</button>
     </form>
@@ -345,25 +303,28 @@
         <div class="logo-container">
             <img src="rapidtek_logo.png" alt="Rapidtek Logo" class="logo-placeholder">
         </div>
-        <h2 style="color: var(--rp-purple);">報名成功</h2>
-        <p style="font-size: 18px;">
-            感謝 <span id="displayUserName" class="thank-you-name"></span> 報名參加。<br>
-            您的資料已成功傳送，請留意後續物資發放通知。
+        <h2 style="color: var(--primary-purple); margin-top: 30px;">報名成功</h2>
+        <p style="font-size: 18px; line-height: 1.8; color: #333;">
+            鐳洋福委感謝 <span id="displayUserName" class="thank-you-name"></span> 報名參加此活動。
         </p>
-        <button type="button" onclick="location.reload()" style="max-width: 200px; margin: 30px auto 0; background: var(--rp-purple);">返回首頁</button>
+        <p style="color: #666; font-size: 14px; margin-bottom: 30px;">您的資料已成功傳送，請留意後續相關通知。</p>
+        <button type="button" onclick="location.reload()" style="max-width: 200px; margin: 0 auto; background: var(--primary-purple);">返回首頁</button>
     </div>
 </div>
 
 <footer>
+    本系統僅供內部資料收集使用 | 相關賽事規程依照 <a href="https://lohasnet.tw/Technology2026/#activity" target="_blank" style="color: var(--primary-orange);">主辦單位官網</a> 為準。<br>
     Rapidtek Technologies Inc. © 2026 All Rights Reserved.
 </footer>
 
 <script>
+    // 尺寸表彈窗控制
     function toggleSizeModal() {
         var modal = document.getElementById('sizeOverlay');
         modal.classList.toggle('hidden');
     }
 
+    // 員工白名單 (保留原始名單)
     var employeeWhitelist = [
         {id: "RP06001", name: "王奕翔 Arthur", email: "arthur@rapidtek.net"},
         {id: "RP10002", name: "張愛 Vivian", email: "accountant@rapidtek.net"},
@@ -444,11 +405,11 @@
     ];
 
     var agreementData = {
-        "content": "【重要聲明】本網頁僅作為鐳洋科技內部員工路跑活動報名資料收集之用。一旦完成提交，即代表您同意以下事項：本人保證身心健康，自願參加比賽。競賽中若發生任何意外，本人及家屬願承擔風險，與鐳洋科技職福會無涉。一經提交，不得要求更換人名、項目或衣服尺寸。",
+        "content": "【重要聲明】本網頁僅作為鐳洋科技內部員工路跑活動報名資料收集之用。所有參賽規範、保險責任及賽事權利均以「樂活報名網」主辦單位公告之正式規程為最高準則。一旦完成提交，即代表您同意以下切結事項：\n\n本人已詳細閱讀過本活動之競賽規程且同意亦保證遵守大會於競賽規程中所約定之事項，保證本人身心健康，亦了解馬拉松/路跑比賽所需承受之風險，自願參加比賽。競賽中若發生任何意外事件，本人及家屬願意承擔比賽期間所發生之個人意外風險責任，與代辦單位（鐳洋科技職福會）及主辦單位無涉。亦明白此項比賽的錄影、相片、姓名及成績可能於世界各地播放或展出。本人保證提供有效的身份證和資料用於核實身份。一經提交，不得以任何理由要求更換人名、參賽項目或衣服尺寸。嚴禁陪跑。",
         "notes": [
-            "1. 本報名僅供鐳洋科技正式員工使用。",
-            "2. 同仁家屬如欲參賽，請至官網自行報名。",
-            "3. 資料務必填寫正確，以免影響投保權益。"
+            "1. 本報名系統僅供鐳洋科技「正式同仁」使用，由職福會補助全額報名費。",
+            "2. 同仁家屬如欲參賽，請自行前往主辦單位官網報名，不納入本次公司團報補助範圍。",
+            "3. 報名資料提交後將由職福會統一對外匯入主辦單位系統，資料務必填寫正確。"
         ]
     };
 
@@ -462,38 +423,53 @@
     function acceptAgreement() { document.getElementById('overlay').style.display = 'none'; }
 
     function showSurvey() {
-        var email = document.getElementById('loginEmail').value.trim().toLowerCase();
-        var id = document.getElementById('empID').value.trim().toUpperCase();
-        var user = employeeWhitelist.find(function(e) {
-            return e.id === id && (e.email.toLowerCase() === email || (e.emails && e.emails.includes(email)));
+        var inputEmail = document.getElementById('loginEmail').value.trim().toLowerCase();
+        var inputID = document.getElementById('empID').value.trim().toUpperCase();
+        var user = employeeWhitelist.find(function(emp) {
+            if (emp.id === inputID) {
+                if (emp.emails) return emp.emails.some(e => e.toLowerCase() === inputEmail);
+                return emp.email.toLowerCase() === inputEmail;
+            }
+            return false;
         });
 
         if (user) {
             document.getElementById('userName').value = user.name;
             document.getElementById('loginSection').classList.add('hidden');
             document.getElementById('surveyForm').classList.remove('hidden');
+            window.scrollTo(0, 0);
         } else {
-            alert('驗證失敗，請檢查工號與信箱是否正確。');
+            alert('驗證失敗：您不在名單內或輸入資料錯誤。本系統僅限鐳洋正式同仁登入。');
         }
     }
 
     var scriptURL = 'https://script.google.com/macros/s/AKfycbwvB04SsgwpY3JnbJKui5J3Y1d2YxIoCj_sC_5fHlQfQ5_pIpdfmQd-jcKrK_FBPEQb/exec';
-    document.getElementById('surveyForm').addEventListener('submit', function(e) {
+    var form = document.getElementById('surveyForm');
+
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
-        var btn = document.getElementById('submitBtn');
-        btn.disabled = true; btn.innerText = '傳送中...';
+        var submitBtn = document.getElementById('submitBtn');
+        var userName = document.getElementById('userName').value;
         
-        var formData = new FormData(this);
+        submitBtn.disabled = true;
+        submitBtn.innerText = '資料傳送中...';
+
+        var formData = new FormData(form);
         formData.append('email', document.getElementById('loginEmail').value);
         formData.append('empID', document.getElementById('empID').value);
 
         fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
         .then(function() {
             document.getElementById('surveyForm').classList.add('hidden');
-            document.getElementById('displayUserName').innerText = document.getElementById('userName').value;
+            document.getElementById('displayUserName').innerText = userName;
             document.getElementById('thankYouSection').classList.remove('hidden');
+            window.scrollTo(0, 0);
         })
-        .catch(function() { alert('提交失敗，請檢查網路'); btn.disabled = false; });
+        .catch(function() {
+            alert('網路異常，請稍後再試');
+            submitBtn.disabled = false;
+            submitBtn.innerText = '確認提交報名資料';
+        });
     });
 </script>
 
