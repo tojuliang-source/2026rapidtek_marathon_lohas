@@ -35,19 +35,12 @@
         .hidden { display: none !important; }
         footer { text-align: center; font-size: 12px; color: #999; margin-top: 30px; padding-bottom: 10px; }
 
-        #overlay, #sizeOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 999; }
-        #agreementBox, #sizeBox { background: white; width: 90%; max-width: 700px; max-height: 85vh; padding: 25px; border-radius: 10px; overflow-y: auto; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 999; }
+        #agreementBox { background: white; width: 90%; max-width: 700px; max-height: 85vh; padding: 25px; border-radius: 10px; overflow-y: auto; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
         #agreementBody { font-size: 14px; line-height: 1.8; color: #444; text-align: justify; background: #f9f9f9; padding: 15px; border: 1px solid #ddd; border-radius: 5px; white-space: pre-wrap; }
         .warning-title { color: #d9534f; font-weight: bold; margin-top: 15px; display: block; }
 
-        /* 尺寸表相關樣式 */
-        .size-btn { background: #6c757d; color: white; border: none; padding: 4px 8px; border-radius: 4px; font-size: 12px; cursor: pointer; margin-left: 10px; vertical-align: middle; }
-        .size-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 14px; }
-        .size-table th, .size-table td { border: 1px solid #ddd; padding: 8px; text-align: center; }
-        .size-table th { background-color: #f2f2f2; }
-        .size-img-placeholder { width: 100%; max-width: 300px; display: block; margin: 10px auto; }
-        .size-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #003366; margin-bottom: 15px; }
-
+        /* 感謝頁面樣式 */
         #thankYouSection { text-align: center; padding: 40px 10px; }
         .thank-you-name { font-weight: bold; color: #003366; }
     </style>
@@ -59,65 +52,6 @@
         <h2>活動切結書與免責聲明</h2>
         <div id="agreementBody"></div>
         <button type="button" onclick="acceptAgreement()">我同意並遵守以上事項</button>
-    </div>
-</div>
-
-<div id="sizeOverlay" class="hidden">
-    <div id="sizeBox">
-        <div class="size-header">
-            <h2 style="border:none; margin:0; padding:0;">衣服尺寸對照表</h2>
-            <span style="cursor:pointer; font-size:24px;" onclick="toggleSizeModal()">×</span>
-        </div>
-        <p style="font-size:13px; color:#666;">單位:公分 | 衣服尺寸誤差值在正負2cm內屬於正常範圍</p>
-        
-        <svg viewBox="0 0 400 400" class="size-img-placeholder">
-            <path d="M100,50 L300,50 L380,120 L330,170 L300,150 L300,350 L100,350 L100,150 L70,170 L20,120 Z" fill="none" stroke="#333" stroke-width="2"/>
-            <line x1="100" y1="180" x2="300" y2="180" stroke="red" stroke-width="2" stroke-dasharray="5,5" />
-            <text x="180" y="170" fill="red" font-size="14">胸寬</text>
-            <line x1="200" y1="50" x2="200" y2="350" stroke="red" stroke-width="2" stroke-dasharray="5,5" />
-            <text x="210" y="250" fill="red" font-size="14">衣長</text>
-        </svg>
-
-        <table class="size-table">
-            <thead>
-                <tr>
-                    <th>尺寸</th>
-                    <th>XXS</th>
-                    <th>XS</th>
-                    <th>S</th>
-                    <th>M</th>
-                    <th>L</th>
-                    <th>XL</th>
-                    <th>2XL</th>
-                    <th>3XL</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><b>胸圍</b></td>
-                    <td>86.4</td>
-                    <td>91.4</td>
-                    <td>96.5</td>
-                    <td>101.6</td>
-                    <td>106.7</td>
-                    <td>113</td>
-                    <td>119.4</td>
-                    <td>125.7</td>
-                </tr>
-                <tr>
-                    <td><b>肩寬</b></td>
-                    <td>40.6</td>
-                    <td>41.6</td>
-                    <td>42.9</td>
-                    <td>44.1</td>
-                    <td>45.4</td>
-                    <td>47.3</td>
-                    <td>48.6</td>
-                    <td>49.8</td>
-                </tr>
-            </tbody>
-        </table>
-        <button type="button" onclick="toggleSizeModal()" style="background:#6c757d;">關閉</button>
     </div>
 </div>
 
@@ -221,13 +155,17 @@
         <div class="note">※ 緊急聯絡人請勿填寫參加人員，以免活動中延誤緊急聯絡處置</div>
         <div class="row">
             <div class="form-group">
-                <label>保證人 (緊急聯絡人) 姓名</label>
-                <input type="text" name="guarantorName" required>
+                <label>緊急聯絡人姓名</label>
+                <input type="text" name="emergencyName" required>
             </div>
             <div class="form-group">
-                <label>保證人 (緊急聯絡人) 身分證</label>
-                <input type="text" name="guarantorId" required>
+                <label>緊急聯絡人關係</label>
+                <input type="text" name="emergencyRelation" required placeholder="如：父子、配偶">
             </div>
+        </div>
+        <div class="form-group">
+            <label>緊急聯絡人電話</label>
+            <input type="tel" name="emergencyPhone" required placeholder="09xxxxxxxx">
         </div>
 
         <h3>第三部分：發票資訊 (職福會統一對外)</h3>
@@ -263,10 +201,7 @@
             </select>
         </div>
         <div class="form-group">
-            <label>
-                紀念運動衣 (尺寸)
-                <button type="button" class="size-btn" onclick="toggleSizeModal()">📏 尺寸對照表</button>
-            </label>
+            <label>紀念運動衣 (尺寸)</label>
             <select name="tshirt" required>
                 <option value="紀念運動衣(XXS)">XXS</option>
                 <option value="紀念運動衣(XS)">XS</option>
@@ -300,16 +235,6 @@
 </footer>
 
 <script>
-    // 尺寸表彈窗控制
-    function toggleSizeModal() {
-        var modal = document.getElementById('sizeOverlay');
-        if (modal.classList.contains('hidden')) {
-            modal.classList.remove('hidden');
-        } else {
-            modal.classList.add('hidden');
-        }
-    }
-
     // 員工白名單
     var employeeWhitelist = [
         {id: "RP06001", name: "王奕翔 Arthur", email: "arthur@rapidtek.net"},
@@ -435,7 +360,7 @@
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         var submitBtn = document.getElementById('submitBtn');
-        var userName = document.getElementById('userName').value;
+        var userName = document.getElementById('userName').value; // 取得員工姓名
         
         submitBtn.disabled = true;
         submitBtn.innerText = '資料傳送中...';
@@ -446,8 +371,11 @@
 
         fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
         .then(function() {
+            // 隱藏表單
             document.getElementById('surveyForm').classList.add('hidden');
+            // 設定感謝頁面姓名
             document.getElementById('displayUserName').innerText = userName;
+            // 顯示感謝頁面
             document.getElementById('thankYouSection').classList.remove('hidden');
             window.scrollTo(0, 0);
         })
